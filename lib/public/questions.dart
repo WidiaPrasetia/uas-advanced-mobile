@@ -1,4 +1,4 @@
-import 'dart:js_util';
+// import 'dart:js_util';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -63,7 +63,7 @@ class _QuestionState extends State<Question> {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(child: CircularProgressIndicator());
               } else if (!snapshot.hasData) {
-                return Text('tidak ada data users');
+                return Text('tidak ada data pertanyaan');
               } else {
                 return Column(
                   children: snapshot.data?.docs.map<Widget>((e) {
