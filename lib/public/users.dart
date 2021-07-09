@@ -1,4 +1,4 @@
-import 'dart:js_util';
+// import 'dart:js_util';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -52,6 +52,7 @@ class _UserState extends State<User> {
                     icon: Icon(Icons.add_circle),
                   ),
                   title: Text('${data['nama']}'),
+                  subtitle: Text('${data['email']}'),
                 );
               }).toList(),
             );

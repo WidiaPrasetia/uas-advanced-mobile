@@ -75,7 +75,7 @@ class _HomeState extends State<Home> {
                     leading: Icon(Icons.tag),
                     onTap: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => job.Job()));
+                          MaterialPageRoute(builder: (context) => Tag()));
                     },
                   ),
                   ListTile(
@@ -127,7 +127,7 @@ class _HomeState extends State<Home> {
                             ),
                           );
                         }),
-                  ])
+                  ]),
             ],
           ),
         ),
