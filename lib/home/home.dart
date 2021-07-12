@@ -1,16 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:project/auth/signup.dart';
 import 'package:project/public/questions.dart' as pertanyaan;
 import 'package:project/public/users.dart';
 import 'package:project/public/tags.dart';
 import 'package:project/coba-coba.dart' as coba;
 import 'package:project/findJobs/jobs.dart' as job;
 import 'package:project/findJobs/companies.dart';
-import 'package:project/auth/login.dart';
 
 class Home extends StatefulWidget {
-  static const routeName = '/home';
   @override
   _HomeState createState() => _HomeState();
 }
@@ -30,15 +27,11 @@ class _HomeState extends State<Home> {
                     icon: Icon(Icons.search_outlined),
                     onPressed: () {}),
                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
-                  },
-                  child: Text('Login'),
+                  onPressed: () {},
+                  child: Text('Sign In'),
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pushReplacementNamed(SignUp.routeName);
-                  },
+                  onPressed: () {},
                   child: Text('Sign Up'),
                 ),
               ],
