@@ -1,19 +1,18 @@
-import 'dart:html';
 import 'package:flutter/material.dart';
-import 'signup.dart';
-import 'package:project/home/home.dart';
+import 'login.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({ Key key }) : super(key: key);
-  static const routeName = '/login';
+class SignUp extends StatefulWidget {
+  const SignUp({ Key key }) : super(key: key);
+  static const routeName = '/signup';
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _SignUpState createState() => _SignUpState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpState extends State<SignUp> {
 
   final GlobalKey<FormState> _formkey = GlobalKey();
+  TextEditingController _passwordController = new TextEditingController();
   void _submit(){
 
   }
@@ -22,20 +21,20 @@ class _LoginPageState extends State<LoginPage> {
     //header
     return Scaffold(
       appBar: AppBar(
-        title: Text ("Login"),
-        //tombol sign up pojok kanan atas
-        actions: <Widget>[
+        title: Text ("SignUp"),
+        //tombol login dihalaman sign
+          actions: <Widget>[
           FlatButton(
             child: Row (
               children: <Widget>[
-                Text('Sign Up'),
-                Icon(Icons.person_add)
+                Text('Login'),
+                Icon(Icons.person)
               ],
               ),
               textColor: Colors.white,
               //navigasi untuk kehalamanan sign up
               onPressed: (){
-                Navigator.of(context).pushReplacementNamed(SignUp.routeName);
+                Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
               },
           )
         ],
@@ -47,20 +46,20 @@ class _LoginPageState extends State<LoginPage> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors:[
-                  Colors.lightGreenAccent,
-                  Colors.blue,
+                  Colors.limeAccent,
+                  Colors.redAccent,
                 ]
               )
             ),
           ),
-          //box 
+          //box
           Center(
             child: Card(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0)
               ),
               child: Container(
-                height : 260,
+                height : 300,
                 width: 300,
                 padding: EdgeInsets.all(16),
                 child: Form(
@@ -89,8 +88,8 @@ class _LoginPageState extends State<LoginPage> {
                         TextFormField(
                           decoration: InputDecoration(labelText: 'Password'),
                           obscureText: true,
-                        
-                        //validasi password jika kurang dari 5 dan kosong maka print invalid password 
+                          controller: _passwordController,
+                        //validasi password jika kurang dari = 5 dan kosong maka print invalid password 
                           validator: (value){
                             if (value.isEmpty || value.length<=5)
                             {
@@ -102,8 +101,24 @@ class _LoginPageState extends State<LoginPage> {
 
                           },  
                         ),
+                        //confirm password
+                        TextFormField(
+                          decoration: InputDecoration(labelText: 'Confirm Password'),
+                          obscureText: true,
+                          
+                        //pengulangan password 
+                          validator: (value){
+                            if (value.isEmpty || value!= _passwordController.text )
+                            {
+                              return 'invalid password';
+                            }
+                            return null;
+                          },
+                          onSaved: (value){
 
-                        //jarak antara colom login dan tombol submit
+                          },  
+                        ),
+                        //jarak antara untuk tombol submit
                         SizedBox(
                           height:30,
                         ),
@@ -115,14 +130,13 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           onPressed: ()
                           {
-                            Navigator.of(context).pushReplacementNamed(Home.routeName);
+                            Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
                           },
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
                           ),
                           color: Colors.blue,
                           textColor: Colors.white,
-                          
                         )
                       ],
                     ),
